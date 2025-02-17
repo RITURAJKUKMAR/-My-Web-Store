@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happ new year - 2025</title>
+    <style>
+        * {
+            background-color: black;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            background-image: url(happyNewYear.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .container{
+            height: 100hv;
+        }
+        h1,
+        h2 {
+            text-align: center;
+            font-size: 50px;
+        }
+
+        h4 {
+            margin: 0 auto;
+            background-color: black;
+            border-radius: 30px;
+            color: pink;
+            text-align: center;
+            color: deeppink;
+        }
+
+        .sms-box {
+            width: 250px;
+            height: 200px;
+            background-color: deeppink;
+            border: 1px gray solid;
+            box-shadow: 0px 0px 0px white;
+            border-radius: 20px;
+            margin: 10rem auto 1rem auto;
+        }
+
+        .shado {
+            margin: 0 auto;
+            width: 250px;
+            height: 50px;
+            background-color: white;
+            border-radius: 100%;
+            box-shadow: 0 0 5px white;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2><i><span>H</span><span>A</span><span>P</span><span>P</span><span>Y</span>
+                <span>N</span><span>E</span><span>W</span> <span>Y</span><span>E</span><span>A</span><span>R</span>
+                <span>2</span><span>0</span><span>2</span><span>5</span></i>
+        </h2>
+        <h1></h1>
+        <div class="sms-box">
+            <h4> "May this New Year bring you endless happiness, success, and beautiful memories. May you shine brighter
+                than ever and achieve all that your heart desires. Here's to a year filled with love, laughter, and
+                dreams coming true. Happy New Year!"
+                ❤❤❤😊😊</h4>
+        </div>
+        <div class="shado"></div>
+    </div>
+
+    <script>
+        let name = prompt("Enter your name", 'Mr. / Mrs.');
+        let letter = document.querySelectorAll('span')
+        let sms = document.querySelector('h1');
+        name = name.toUpperCase();
+        for (let i = 0; name[i]; i++) {
+            let sp = document.createElement('span');
+            sp.innerText = name[i];
+            sp.style.color = `rgb(${newNum()}5, ${newNum()}22, 15${newNum()})`;
+            sms.appendChild(sp);
+        }
+        console.log(`HAPPY NEW YEAR ${name}`);
+        function newNum() {
+            return (Math.floor(Math.random() * 100) % 30);
+        }
+        letter.forEach(e => {
+            e.style.color = `rgb(${newNum()}5, ${newNum()}22, 15${newNum()})`;
+        });
+    </script>
+</body>
+
+</html>

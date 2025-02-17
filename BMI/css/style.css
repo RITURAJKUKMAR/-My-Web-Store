@@ -1,0 +1,166 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    height: 100px;
+    width: 100%;
+    background-color: rgb(48, 102, 144);
+    font-size: 35px;
+    font-weight: 900;
+    font: bold;
+    text-align: center;
+    align-content: center;
+}
+
+body {
+    background-color: wheat;
+}
+
+main {
+    section {
+        .container {
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-around;
+
+            .form {
+                background-color: lightblue;
+                align-content: center;
+                width: 45%;
+                border-radius: 10px;
+
+                table {
+                    display: flex;
+                    justify-content: center;
+
+                    tr {
+                        margin: 0 auto;
+                        text-align: center;
+                    }
+
+                    input,
+                    button {
+                        margin: 10px;
+                        padding: 5px;
+                        width: 120px;
+                        outline: none;
+                        border: 1px gray solid;
+                        border-radius: 7px;
+                    }
+
+                    button {
+                        background-color: rgb(48, 102, 144);
+                    }
+                }
+            }
+
+            .output {
+                background-color: lightblue;
+                width: 45%;
+                text-align: center;
+                height: 300px;
+                padding: 10px;
+                border-radius: 10px;
+                align-content: center;
+
+                .ans {
+                    font-size: 24px;
+                    display: flex;
+                    justify-content: center;
+
+                    .numans {
+                        #number {
+                            font-size: 50px;
+                        }
+                    }
+
+                    .statment {
+                        color: white;
+
+                        #status {
+                            color: green;
+                        }
+                    }
+                }
+
+                .line {
+                    margin: 2px auto;
+                    background-color: gray;
+                    width: 90%;
+                    height: 4px;
+                    border-radius: 5px;
+                }
+
+                .info {
+                    padding: 30px 0;
+                    font-size: 18px;
+                }
+
+                .situation {
+                    display: flex;
+                    font-size: 24px;
+                    justify-content: space-around;
+
+                    .under {
+                        color: rgb(48, 102, 144);
+                    }
+
+                    .undercolor {
+                        background-color: rgb(48, 102, 144);
+                        width: 100%;
+                        height: 3px;
+                    }
+
+                    .normal {
+                        color: green;
+                    }
+
+                    .normalcolor {
+                        background-color: green;
+                        width: 100%;
+                        height: 3px;
+                    }
+
+                    .over {
+                        color: brown;
+                    }
+
+                    .overcolor {
+                        background-color: brown;
+                        width: 100%;
+                        height: 3px;
+                    }
+
+                    #digit {
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:1000px) {
+    main {
+        section {
+            .container {
+                margin: 20px auto;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-direction: column-reverse;
+
+                .form {
+                    width: 90%;
+                    margin-top: 20px;
+                }
+
+                .output {
+                    width: 90%;
+                }
+            }
+        }
+    }
+}

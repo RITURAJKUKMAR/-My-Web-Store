@@ -1,0 +1,344 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    height: 60px;
+    background-color: black;
+    color: white;
+    align-content: center;
+    text-align: center;
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    height: 40px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    align-content: center;
+    text-align: center;
+}
+
+.bgi {
+    background-image: url(img/bgi.jpg);
+    height: 100vh;
+    background-size: cover;
+}
+
+.dashbord-container {
+    padding-top: 100px;
+}
+
+.dashboard {
+    margin: 0px auto;
+    background-color: #fff;
+    border-radius: 20px;
+    text-align: center;
+    height: 300px;
+    width: 300px;
+}
+
+.dashboard p {
+    font-size: 50px;
+}
+
+.btn-computer,
+.btn-player {
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+}
+
+#pl,
+#com {
+    width: 50px;
+    height: 50px;
+    outline: none;
+    border: 1px black solid;
+    border-radius: 100%;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+#start {
+    margin-top: 20px;
+    width: 100px;
+    height: 40px;
+    border: 1px black solid;
+    border-radius: 20px;
+    font-weight: 900;
+    font-size: 25px;
+    background-color: lightblue;
+}
+
+#pl:active,
+#com:active,
+#start:active {
+    transform: scale(1.1);
+}
+
+.container {
+    padding-top: 5px;
+    margin: 0px auto;
+    width: 550px;
+    display: none;
+}
+
+.container .first {
+    padding-bottom: 1px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container .second {
+    padding-top: 3px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#dice {
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+    outline: none;
+    border: 2px black solid;
+    font-size: 24px;
+    transition: transform 0.2s ease-in-out;
+}
+
+#dice:active {
+    transform: rotate(5turn);
+}
+
+button {
+    cursor: pointer;
+}
+
+.dice-box {
+    height: 55px;
+    width: 55px;
+    background-color: #fff;
+    text-align: center;
+    align-content: center;
+    border-radius: 7px;
+    border: 1px black solid;
+}
+
+
+#new-game {
+    margin-top: 20px;
+    width: 200px;
+    height: 40px;
+    border: 1px black solid;
+    border-radius: 20px;
+    font-weight: 900;
+    font-size: 23px;
+    background-color: lightblue;
+}
+
+.ladder-bord {
+    margin: 0px auto;
+    width: 550px;
+    height: 550px;
+    background-color: white;
+    border: 1px black solid;
+    box-shadow: 0 0 10px;
+}
+
+.ladder-bord {
+    display: grid;
+    grid-row-gap: 0px;
+    justify-content: space-between;
+    grid-template-columns: 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7%;
+    grid-template-rows: 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7% 6.7%;
+}
+
+.ladder-bord>span {
+    border: 1px black solid;
+    text-align: center;
+    font-size: 22px;
+    display: flex;
+}
+
+.red-col {
+    background-color: red;
+}
+
+.green-col {
+    background-color: green;
+}
+
+.blue-col {
+    background-color: blue;
+}
+
+.yellow-col {
+    background-color: yellow;
+}
+
+.home-col {
+    background-color: rgb(226, 33, 155);
+}
+
+#green-box {
+    grid-column-start: 1;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 7;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.G1,
+.G2,
+.G3,
+.G4 {
+    background-color: lightgreen;
+}
+
+#yellow-box {
+    grid-column-start: 10;
+    grid-column-end: 16;
+    grid-row-start: 1;
+    grid-row-end: 7;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Y1,
+.Y2,
+.Y3,
+.Y4 {
+    background-color: rgb(244, 244, 104);
+}
+
+#home-box {
+    grid-column-start: 7;
+    grid-column-end: 10;
+    grid-row-start: 7;
+    grid-row-end: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 900;
+    background-color: greenyellow;
+}
+
+#red-box {
+    grid-column-start: 1;
+    grid-column-end: 7;
+    grid-row-start: 10;
+    grid-row-end: 16;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.R1,
+.R2,
+.R3,
+.R4 {
+    background-color: rgb(244, 73, 73);
+}
+
+#blue-box {
+    grid-column-start: 10;
+    grid-column-end: 16;
+    grid-row-start: 10;
+    grid-row-end: 16;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.B1,
+.B2,
+.B3,
+.B4 {
+    background-color: rgb(80, 205, 247);
+}
+
+span>div {
+    height: 150px;
+    width: 150px;
+    border: 3px black solid;
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: auto auto;
+    align-items: center;
+}
+
+#btns {
+    height: 30px;
+    width: 30px;
+    outline: none;
+    border: 1px black solid;
+    border-radius: 100%;
+    cursor: pointer;
+    z-index: 5;
+    font-weight: 900;
+    font: bold;
+}
+
+#btns:active {
+    transform: scale(1.1);
+}
+
+.absolute {
+    position: absolute;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+@media screen and (max-width:500px) {
+    .ladder-bord {
+        width: 350px;
+        height: 350px;
+    }
+
+    .container {
+        padding-top: 100px;
+    }
+
+    span>div {
+        height: 100px;
+        width: 100px;
+        border: 3px black solid;
+        display: grid;
+        justify-content: space-around;
+        grid-template-columns: auto auto;
+        align-items: center;
+    }
+
+    #btns {
+        height: 20px;
+        width: 20px;
+        outline: none;
+        border: 1px black solid;
+        border-radius: 100%;
+        cursor: pointer;
+        font-weight: 800;
+    }
+
+    .container {
+        width: 350px;
+    }
+}

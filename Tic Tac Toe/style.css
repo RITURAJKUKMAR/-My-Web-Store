@@ -1,0 +1,105 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-weight: 900;
+    font: bold;
+}
+
+header ,footer,.draw{
+    background-color: black;
+    height: 60px;
+    color: white;
+    align-content: center;
+    text-align: center;
+}
+
+.reset-btn {
+    display: block;
+    background-color: aqua;
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+main .container {
+    padding: 10px;
+    margin: 30px auto;
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    display: grid;
+    grid-template-rows: 32% 32% 32%;
+    grid-template-columns: 32% 32% 32%;
+    row-gap: 10px;
+    column-gap: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px black;
+}
+
+.result{
+    align-content: center;
+    padding: 10px;
+    margin: 30px auto;
+    width: 500px;
+    height: 400px;
+    background-color: red;
+    border-radius: 10px;
+    box-shadow: 0 0 20px black;
+    display: none;
+}
+
+.result p{
+    text-align: center;
+    font-size: 24px;
+    margin: 20px;
+}
+
+.draw{
+    width: 481px;
+    width: 70%;
+    height: 100px;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    background-color: rgba(255, 255, 0, 0.852);
+    color: black;
+    font-size: 30px;
+    display: none;
+}
+
+.container .btns{
+    background-color: black ;
+    color: white;
+    border-radius: 20px;
+    font-size: 100px;
+    transition: all 0.3s ease;
+}
+
+button {
+    outline: none;
+    border: 1px black solid;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:active{
+    transform: translateY(2px);
+}
+
+.show{
+    display: block;
+}
+.hide{
+    display: none;
+}
+
+@media screen and (max-width: 1000px){
+    main .container , .result{
+        width: 90%;
+    }
+    .draw{
+       width: 87%;
+    }
+}

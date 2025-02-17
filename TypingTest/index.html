@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing - Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: content-box;
+        }
+
+        :root {
+            --main-bg-color: rgb(58, 193, 141);
+        }
+
+        body {
+            background-color: gray;
+        }
+
+        header {
+            width: 100%;
+            height: 60px;
+            background-color: var(--main-bg-color);
+            text-align: center;
+            align-content: center;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0px;
+            width: 100%;
+            height: 40px;
+            background-color: var(--main-bg-color);
+            text-align: center;
+            align-content: center;
+        }
+
+        .easy-medium-hard {
+            margin: 100px auto;
+            padding: 50px;
+            background-color: var(--main-bg-color);
+            width: 400px;
+            align-items: center;
+            text-align: center;
+            border: 1px black solid;
+            border-radius: 20px;
+            box-shadow: 0 0 20px inset rgb(2, 57, 36);
+
+            p {
+                margin-bottom: 20px;
+                font-size: 38px;
+                text-align: center;
+            }
+
+            button {
+                margin: 5px;
+                width: 100px;
+                height: 30px;
+                font-size: 20px;
+            }
+        }
+
+        .container {
+            margin: 80px auto;
+            padding: 30px;
+            background: var(--main-bg-color);
+            width: 70%;
+            min-height: 200px;
+            border: 1px black solid;
+            border-radius: 20px;
+            box-shadow: 0 0 20px black;
+            font-size: 30px;
+            display: none;
+
+            button {
+                margin: 10px auto;
+                width: 100px;
+                height: 30px;
+                font-size: 20px;
+                float: inline-end;
+            }
+
+            .text-box {
+                padding: 5px;
+                background-color: gray;
+                border: 1px black solid;
+                border-radius: 5px;
+                margin-bottom: 20px;
+                font: bold;
+                font-weight: 900;
+            }
+
+            textarea {
+                width: 97%;
+                padding: 10px;
+                outline: none;
+                border: 1px black solid;
+                border-radius: 5px;
+                font-size: 30px;
+                font: bold;
+                font-weight: 900;
+                min-height: 200px;
+                scrollbar-width: none;
+                scroll-behavior: smooth;
+                font-family: 'Times New Roman', Times, serif;
+            }
+        }
+
+        .result-box {
+            margin: 80px auto;
+            padding: 30px;
+            background: var(--main-bg-color);
+            width: 70%;
+            min-height: 200px;
+            border: 1px black solid;
+            border-radius: 20px;
+            box-shadow: 0 0 20px black;
+            font-size: 20px;
+            font-weight: 900;
+            font: bold;
+            display: none;
+
+            .result {
+                width: 100%;
+                height: 100%;
+                border: 1px black solid;
+                border-radius: 20px;
+                display: flex;
+                flex-wrap: wrap-reverse;
+                justify-content: space-around;
+
+                .characters,
+                .time,
+                .WPM,
+                .accuracy {
+                    margin: 4px;
+                    width: 115px;
+                    height: 115px;
+                    background-color: var(--main-bg-color);
+                    border-radius: 100%;
+                    box-shadow: 0 0 25px inset black;
+                    text-align: center;
+                    align-content: center;
+                }
+            }
+
+            button {
+                margin: 10px auto;
+                width: 100px;
+                height: 30px;
+                font-size: 20px;
+                float: inline-end;
+            }
+        }
+
+        button {
+            outline: none;
+            border: 1px black solid;
+            border-radius: 20px;
+            cursor: pointer;
+            background-color: lightgreen;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        button:active {
+            transform: scale(1.1);
+        }
+
+        @media screen and (max-width:1000px) {
+            .container {
+                font-size: 18px;
+
+                textarea {
+                    font-size: 18px;
+                    min-height: 150px;
+                }
+            }
+
+            .easy-medium-hard {
+                width: 230px;
+            }
+
+            .result-box {
+                font-size: 18px;
+            }
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Typing Test</h1>
+    </header>
+    <div class="easy-medium-hard">
+        <p><b>Check your typing skills</b></p>
+        <button onclick="start(1);"><b>EASY</b></button>
+        <button onclick="start(2);"><b>MEDIUM</b></button>
+        <button onclick="start(3);"><b>HARD</b></button>
+    </div>
+    <div class="container">
+        <div class="text-box">
+            <div id="text"> </div>
+        </div>
+        <div class="typing-box">
+            <textarea name="inputText" id="inputText" placeholder="Start Typing ..." autofocus></textarea>
+        </div>
+        <a href="index.html"><button>Restart</button></a>
+    </div>
+    <div class="result-box">
+        <div class="result">
+            <div class="accuracy"></div>
+            <div class="characters"></div>
+            <div class="time"></div>
+            <div class="WPM"></div>
+        </div>
+        <a href="index.html"><button>Restart</button></a>
+    </div>
+    <footer>
+        <p><b>Copyright &copy 2017 Typing Test.com</b></p>
+    </footer>
+    <script>
+        let text = document.querySelector('#text');
+        let words = '';
+
+        function start(l) {
+            let textBox = text.parentElement;
+            let container = textBox.parentElement;
+            let btnBox = document.querySelector(".easy-medium-hard");
+            // console.log("easy");
+            btnBox.classList.add('hide');
+            container.classList.add('show');
+            words = wordList(l);
+            for (let i = 0; i < words[0].length; i++) {
+                let span = document.createElement("span");
+                span.className = 's' + i;
+                span.innerText = words[0][i];
+                text.appendChild(span);
+            }
+        }
+
+        function wordList(l) {
+            let w0 = ["The whispers of the wind tell stories of ancient landscapes. Nature's resilience and harmony inspire humans to protect and cherish it."];
+            let w1 = ['Nature is a vast and intricate system that sustains all living beings on Earth. The serene beauty of a forest in the early morning is unparalleled.'];
+            let w2 = ["Mountains stand as timeless monuments to the Earth's geological history. The sound of rustling leaves in a gentle breeze soothes the soul."];
+            let w3 = ["Sunrises and sunsets paint the sky with breathtaking colors each day. Flowers bloom in vibrant hues, attracting pollinators essential for ecosystems."];
+            let w4 = ["Rain brings life to parched lands, ensuring growth and survival. Birds fill the air with melodies that celebrate the joy of existence."];
+            let w5 = ["The night sky, sprinkled with stars, reminds us of the vast universe beyond. Coral reefs are underwater cities teeming with vibrant marine life. Grasslands stretch endlessly, providing habitats for numerous animals. Oceans cover over 70% of the Earth's surface, hosting a rich diversity of life."];
+            let w6 = ["The dense canopy of a rainforest shelters countless organisms. Nature's cycles, such as the water and carbon cycles, sustain life on Earth. Every drop of dew on a leaf reflects the interconnectedness of life. Rivers carve their way through valleys, nourishing the land and its inhabitants."];
+            let w7 = ["The rhythm of the seasons showcases nature's ability to adapt and renew. Deserts, though barren, are home to unique and resilient species. Nature is a source of endless beauty and wonder. The vibrant colors of a sunset can take your breath away. Mountains stand tall, a testament to Earth's majestic power."];
+            let w8 = ["The gentle rustling of leaves is nature's soothing melody. Rivers carve their way through landscapes, shaping the Earth. Flowers bloom in a riot of colors, attracting bees and butterflies. The vastness of the ocean reminds us of our small place in the world. Rain refreshes the earth, bringing life to plants and animals."];
+            let w9 = ["Forests are the lungs of our planet, providing oxygen for all. The stars in the night sky are nature's eternal mysteries. Nature teaches us the value of balance and harmony. Birds fill the air with their melodic songs each morning. The smell of fresh rain on soil is both calming and invigorating."];
+            let w10 = ["The desert's stark beauty is a reminder of nature's contrasts. The aurora borealis lights up the sky with dazzling colors. Coral reefs are underwater gardens of breathtaking splendor. Snow-capped peaks glisten under the sun, a vision of purity. The sound of waves crashing on the shore is deeply calming. Nature inspires artists, poets, and dreamers alike. Wildlife photographers capture the raw essence of nature. The chirping of crickets at night is nature's lullaby."];
+            let w11 = ["The intricate patterns of a spider's web are a marvel of design. Nature's ecosystems are interconnected and interdependent. The sun's warmth gives life to all living beings. Trees stand as silent witnesses to centuries of history. The changing colors of autumn leaves are a feast for the eyes. Nature reminds us of the passage of time and life's impermanence. The deep blue of the sky reflects the ocean's vastness. Nature's unpredictability keeps us humble and alert."];
+            let w12 = ["Insects play a crucial role in maintaining ecological balance. The fragrance of blooming flowers is nature's perfume. The calm of a forest trail clears the mind and soothes the soul. Nature provides us with food, water, and shelter. The sight of a rainbow fills hearts with joy and wonder. The earthworms beneath the soil work tirelessly for its fertility. Nature's beauty is a reminder of the divine in our world. Each sunrise is a new beginning painted by nature."];
+            let w13 = ["The soft glow of moonlight transforms the world into a dreamscape. Nature's fury, like hurricanes and volcanoes, showcases its raw power. The song of a babbling brook is nature's poetry in motion. Bees buzzing around flowers are tiny yet vital to life on Earth. The stillness of a mountain lake mirrors the sky's infinite beauty. Nature's resilience is evident in its ability to recover from disasters. Protecting nature is a responsibility we owe to future generations."];
+            let w14 = ["The chirping of crickets signals the approach of night. Nature's palette is filled with every color imaginable. The intricate design of a spider's web is awe-inspiring. The cool shade of a tree is nature's gift on a hot day. The vastness of the ocean is a humbling sight. The gentle flutter of leaves in the breeze is soothing. The northern lights are nature's breathtaking light show. Mountains are a symbol of strength and endurance. The tranquil sound of a flowing stream calms the mind. Flowers bloom in a cycle of life and renewal."];
+            let w15 = [" The forest floor is a rich ecosystem teeming with life. Nature's storms remind us of its immense power. The chirping of birds heralds the arrival of spring. Waves crashing on the shore create a rhythmic melody. The desert blooms after rain, showcasing nature's adaptability. Nature's creatures live in harmony within their ecosystems. The golden hues of autumn leaves are enchanting. The sight of a rainbow lifts spirits and inspires hope. Nature's beauty is a source of endless inspiration. The earthy smell after rain is invigorating."];
+            let num;
+            if (l == 1)
+                num = Math.floor((Math.random() * 100) % 5);
+            else if (l == 2) {
+                do {
+                    num = Math.floor((Math.random() * 100) % 10);
+                } while (num <= 4);
+            }
+            else if (l == 3) {
+                do {
+                    num = Math.floor((Math.random() * 100) % 16);
+                } while (num <= 9);
+            }
+            switch (num) {
+                case 0: return w0;
+                case 1: return w1;
+                case 2: return w2;
+                case 3: return w3;
+                case 4: return w4;
+                case 5: return w5;
+                case 6: return w6;
+                case 7: return w7;
+                case 8: return w8;
+                case 9: return w9;
+                case 10: return w10;
+                case 11: return w11;
+                case 12: return w12;
+                case 13: return w13;
+                case 14: return w14;
+                case 15: return w15;
+            }
+        }
+
+
+
+        let index = 0, t = 0, wrong = 0, hr = 0, min = 0, sec = 0;
+        let flag = 0, space = 0;
+        let inputtext = document.querySelector('textarea');
+        setInterval(() => {
+            if (flag) {
+                sec++;
+                if (sec > 60) {
+                    sec = 0;
+                    min++;
+                    if (min > 60) {
+                        min = 0;
+                        hr++;
+                    }
+                }
+                // console.log(`${hr}:${min}:${sec}`);
+            }
+            inputtext.oninput = function () {
+                if (inputtext.value[index] == ' ')
+                    space++;
+                flag = 1;
+                if (inputtext.value[index]) {
+                    if (inputtext.value[index] == text.innerText[index]) {
+                        let l = document.querySelector(`.s${index}`);
+                        l.style.color = 'green';
+                        // console.log("True");
+                    }
+                    else {
+                        let l = document.querySelector(`.s${index}`);
+                        l.style.color = 'red';
+                        wrong++;
+                        // console.log("False");
+                    }
+                    index++;
+                }
+                else {
+                    index = inputtext.value.length;
+                    let l = document.querySelector(`.s${index}`);
+                    l.style.color = 'black';
+                }
+                // console.log(index);
+                if (index >= text.innerText.length) {
+                    result();
+                    flag = 0;
+                }
+            }
+        }, 1000);
+
+        text.oncopy = function () {
+            return false;
+        }
+        inputtext.onpaste = function () {
+            return false;
+        }
+        function result() {
+            // console.log("Result");
+            let res = document.querySelector(".result-box");
+            let textBox = text.parentElement;
+            let container = textBox.parentElement;
+            container.classList.remove('show');
+            container.classList.add('hide');
+            res.classList.add('show');
+            let wpm = document.querySelector(".WPM");
+            let characters = document.querySelector(".characters");
+            let time = document.querySelector(".time");
+            let accuracy = document.querySelector(".accuracy");
+            characters.innerHTML = `Characters<br> Incor/Cor <br> ${wrong}/${text.innerText.length - wrong}`;
+            time.innerHTML = `Time <br>${hr} : ${min} : ${sec}`;
+            accuracy.innerHTML = `Accuracy <br>${Math.floor(((text.innerText.length - wrong) * 100) / text.innerText.length)}%`;
+            wpm.innerHTML = `WPM <br> ${(Math.floor(space / min)) == 'Infinity' ? 0 : (Math.floor(space / min))}`;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>https://www.BMI.com</title>
+    <link rel="icon" type="image/icon" href="img/bmi.png">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1><img width="70px" src="img/bmi.png" alt="logo"> <b> BMI </b></h1>
+    </header>
+    <main>
+        <section>
+            <div class="container">
+                <div class="form">
+                    <table>
+                        <tr>
+                            <td>
+                                <b> WEIGHT (kg) : </b>
+                            </td>
+                            <td>
+                                <input type="text" name="weight" placeholder="60">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>HEIGHT (cm) : </b>
+                            </td>
+                            <td>
+                                <input type="text" name="height" placeholder="170">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="reset">
+                                    <button id="reset" type="reset">Reset</button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="submit">
+                                    <button id="btn" type="submit">Submit</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="output">
+                    <div class="ans">
+                        <div class="numans">
+                            <b id="number">20.8</b>
+                        </div>
+                        <div class="statment">
+                            <b>BMI</b>
+                            <P id="status">Normal</P>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="info"><b>Information</b></div>
+                    <div class="situation">
+                        <div class="under">
+                            <p>Underweight</p>
+                            <div class="undercolor"></div>
+                            <p id="digit">16.0 - 18.5</p>
+                        </div>
+                        <div class="normal">
+                            <p>Normal</p>
+                            <div class="normalcolor"></div>
+                            <p id="digit">18.5 - 25.0</p>
+                        </div>
+                        <div class="over">
+                            <p>Overweight</p>
+                            <div class="overcolor"></div>
+                            <p id="digit">25.0 - 40.0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+<script src="bmi.js"></script>
+
+</html>

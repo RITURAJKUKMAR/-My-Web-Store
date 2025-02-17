@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ludo King - Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>LUDO - KING</h1>
+    </header>
+    <main>
+        <div class="bgi">
+            <div class="dashbord-container">
+                <div class="dashboard">
+                    <p>Player</p>
+                    <div class="btn-player">
+                        <button class="green-col" id="pl">1</button>
+                        <button class="red-col" id="pl">2</button>
+                        <button class="blue-col" id="pl">3</button>
+                        <button class="yellow-col" id="pl">4</button>
+                    </div>
+                    <p>Computer</p>
+                    <div class="btn-computer">
+                        <button class="blue-col" id="com">0</button>
+                        <button class="red-col" id="com">0</button>
+                        <button class="yellow-col" id="com">0</button>
+                    </div>
+                    <button id="start" onclick="start()">Start</button>
+                </div>
+            </div>
+            <div class="container">
+                <div class="first">
+                    <div class="green-col dice-box"><button class="green-dice" value="green-dice" id="dice">6</button>
+                    </div>
+                    <div class="yellow-col dice-box"><button class="yellow-dice" value="yellow-dice"
+                            id="dice">6</button></div>
+                </div>
+                <div class="ladder-bord">
+
+                </div>
+                <div class="second">
+                    <div class="red-col dice-box"><button class="red-dice" value="red-dice" id="dice">6</button></div>
+                    <a href="index.html"><button id="new-game">NEW GAME</button></a>
+                    <div class="blue-col dice-box"><button class="blue-dice" value="blue-dice" id="dice">6</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p><b>Copyright &copy 2017 Ludo-king.com</b></p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+
+</html>

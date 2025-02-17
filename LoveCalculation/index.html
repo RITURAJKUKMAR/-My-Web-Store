@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Calculator - find your 100%</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .input-box,
+        .output-box {
+            margin: 150px auto 100px auto;
+            width: 350px;
+            background-color: deeppink;
+            padding: 20px 7px;
+            border: 1px black solid;
+            border-radius: 20px;
+        }
+
+        #name,
+        #crush-name {
+            font-weight: 900;
+        }
+
+        .output-box {
+            display: none;
+        }
+
+        input {
+            width: 340px;
+            height: 35px;
+            padding-left: 5px;
+            outline: none;
+            border: 1px black solid;
+            border-radius: 10px;
+            font-size: 18px;
+            font: bold;
+            font-weight: 900;
+        }
+
+        b,
+        i {
+            font-size: 50px;
+            display: block;
+            text-align: center;
+        }
+
+        .ans {
+            text-align: center;
+        }
+
+        p {
+            display: inline;
+            font-size: 34px;
+        }
+
+        h2 {
+            text-align: center;
+            background-color: pink;
+            position: fixed;
+            width: 100%;
+            bottom: 0px;
+        }
+
+        button {
+            width: 345px;
+            height: 35px;
+            font: bold;
+            font-weight: 900;
+            outline: none;
+            border: 1px black solid;
+            border-radius: 10px;
+            background-color: pink;
+            cursor: pointer;
+        }
+
+        .percentage {
+            margin: 0 auto;
+            height: 150px;
+            width: 150px;
+            border: 1px red solid;
+            border-radius: 100%;
+            background-color: pink;
+            align-content: center;
+            text-align: center;
+            box-shadow: 0 0 7px inset red;
+        }
+
+        #emoji {
+            border: 1px red solid;
+            background-color: pink;
+            margin: 5px auto;
+            width: 250px;
+            border-radius: 20px;
+        }
+
+        i {
+            border: 1px red solid;
+            border-radius: 10px;
+            box-shadow: 0 0 7px inset;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        <div class="pure">Pure CALCULATION</div>
+    </h1>
+    <div class="container">
+        <div class="input-box">
+            <form action="" onsubmit="return calculation()">
+                <table>
+                    <a id="show-output" href="#output"></a>
+                    <tr>
+                        <td> <input type="text" placeholder="Your Name" autofocus required minlength="4"> </td>
+                    </tr>
+                    <tr>
+                        <td> <b>❤️</b> </td>
+                    </tr>
+                    <tr>
+                        <td> <input type="text" placeholder="Your Crush Name" required minlength="4"> </td>
+                    </tr>
+                    <tr>
+                        <td> <button id="submit" type="submit">CALCULATE ❤️ LOVE</button> </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="output-box" id="output">
+            <i>Love Percentage</i>
+            <div class="ans">
+                <p id="name"></p>
+                <b style="display: inline;">❤️</b>
+                <p id="crush-name"></p>
+            </div>
+            <div class="percentage">
+                <p id="Percentage"> </p>
+            </div>
+            <td> <b id="emoji"> ❤️💝❤️ </b></td>
+            <a href="index.html"> <button>CALCULATE AGAIN</button></a>
+        </div>
+    </div>
+    <h2> Copyright &copy 2017 Pure Love Calculator.com </h2>
+    <script>
+        let showOutput = document.querySelector(".output-box");
+        let inputBox = document.querySelector(".input-box");
+        let output = document.querySelector("#show-output");
+        let emoji = document.querySelector("#emoji");
+        let submit = document.querySelector("#submit");
+        // let Percentage = document.querySelector("#Percentage");
+        let inputData = document.querySelectorAll("input");
+        let name = document.querySelector("#name");
+        let crushName = document.querySelector("#crush-name");
+        function calculation() {
+            let num;
+            do
+                num = ((Math.random() * 100)).toFixed(2);
+            while (num <= 30);
+            output.click();
+            showOutput.classList.add('show');
+            inputBox.classList.add('hide');
+            name.innerText = inputData[0].value;
+            crushName.innerText = inputData[1].value;
+            console.log(num);
+            if (num > 80)
+                emoji.innerText = '❤️💝❤️';
+            else if (num < 50)
+                emoji.innerText = '💔😥💘';
+            else
+                emoji.innerText = '🩷❤️';
+            let i = 0, j = 0;
+            setInterval(() => {
+                let Percentage = document.querySelector("#Percentage");
+                if (i < num) {
+                    if (j > 9) {
+                        i++;
+                        j = 0;
+                    }
+                    Percentage.innerText = `${i}.${j}%`;
+                }
+                else
+                    Percentage.innerText = `${num}%`;
+                j++;
+            }, 1);
+            return false;
+        }
+    </script>
+</body>
+
+</html>
